@@ -12,6 +12,7 @@
         engineDir: '../../cocos2d/',
         //SingleEngineFile:'',
         appFiles:[
+            'src/Util.js',
             'src/resource.js',
             'src/GameLayer.js',     //add your own files in order here
             'src/Jumper.js',

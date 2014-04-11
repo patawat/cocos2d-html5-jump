@@ -24,14 +24,20 @@ var GameLayer = cc.LayerColor.extend({
 
     createBlocks: function() {
         this.blocks = [];
-        var groundBlock = new Block( 0, 0, 700, 160 );
-        this.blocks.push( groundBlock );
 
-        var middleBlock = new Block( 0, 200, 400, 250 );
-        this.blocks.push( middleBlock );
+        var blocks = [
+            [0, 0, 700, 160],
+            [0, 200, 400, 250],
+            [600, 400, 800, 450]
+        ];
 
-        var topBlock = new Block( 600, 400, 800, 450 );
-        this.blocks.push( topBlock );
+        for(var i=0; i < blocks.length; i++){
+            var definition = blocks[i];
+            definition.unshift(Block);
+            
+            var block = Create.apply(null, definition);
+            this.blocks.push(block);
+        }
 
         this.addAllblocks();
     },
