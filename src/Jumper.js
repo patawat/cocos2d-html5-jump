@@ -61,20 +61,12 @@ var Jumper = cc.Sprite.extend({
             if ( ( !this.moveLeft ) && ( !this.moveRight ) ) {
                 this.autoDeaccelerateX();
             } else if ( this.moveRight ) {
-                this.accelerateX( 1 );
+                this.accelerateX( Jumper.ACCEL_RIGHT );
             } else {
-                this.accelerateX( -1 );
+                this.accelerateX( Jumper.ACCEL_LEFT );
             }
         }
         this.x += this.vx;
-        /*
-        if ( this.x < 0 ) {
-            this.x += screenWidth;
-        }
-        if ( this.x > screenWidth ) {
-            this.x -= screenWidth;
-        }
-        */
         this.checkScreenWidth();
     },
     checkScreenWidth: function(){
@@ -187,4 +179,6 @@ Jumper.KEYMAP = {}
 Jumper.KEYMAP[cc.KEY.left] = 'moveLeft';
 Jumper.KEYMAP[cc.KEY.right] = 'moveRight';
 Jumper.KEYMAP[cc.KEY.up] = 'jump';
+Jumper.ACCEL_LEFT = -1;
+Jumper.ACCEL_RIGHT = 1;
         

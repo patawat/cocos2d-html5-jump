@@ -5,18 +5,21 @@ var GameLayer = cc.LayerColor.extend({
 
         this.createBlocks();
 
-        this.jumper = new Jumper( 400, 160 );
-        this.jumper.setBlocks( this.blocks );
-        this.addChild( this.jumper );
-        this.scheduleOnce(function() {
-            this.jumper.scheduleUpdate();
-        }, 1);
+        this.createJumper();
         
         this.setKeyboardEnabled( true );
 
         this.scheduleUpdate();
         
         return true;
+    },
+    createJumper: function() {
+        this.jumper = new Jumper( 400, 160 );
+        this.jumper.setBlocks( this.blocks );
+        this.addChild( this.jumper );
+        this.scheduleOnce(function() {
+            this.jumper.scheduleUpdate();
+        }, 1);
     },
 
     createBlocks: function() {
@@ -30,7 +33,10 @@ var GameLayer = cc.LayerColor.extend({
         var topBlock = new Block( 600, 400, 800, 450 );
         this.blocks.push( topBlock );
 
-        this.blocks.forEach( function( b ) {
+        this.addAllblocks();
+    },
+    addAllblocks: function(){
+          this.blocks.forEach( function( b ) {
             this.addChild( b );
         }, this );
     },
